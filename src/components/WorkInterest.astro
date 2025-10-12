@@ -1,0 +1,119 @@
+---
+// src/components/InteresesLaborales.astro
+const intereses = [
+    "Full Stack Development",
+    "Front-end Development",
+    "Data Analyst",
+    "QA / Testing",
+];
+---
+
+<section class="intereses-section">
+    <h2 class="intereses-title">Job interests</h2>
+    <div class="intereses-container">
+        {
+            intereses.map((interes) => (
+                <div class="interes-card">
+                    <div class="interes-content">
+                        <span class="interes-text">{interes}</span>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .intereses-section {
+        padding: 4rem 2rem;
+        background: whitesmoke;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .intereses-title {
+        font-size: 2rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 3rem;
+        font-family: "K2D", sans-serif;
+        background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .intereses-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .interes-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem 2rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border-left: 3px solid #ffd700;
+    }
+
+    .interes-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 4px;
+
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+    }
+
+    .interes-card:hover {
+        background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+        transform: translateX(8px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .interes-card:hover::before {
+        transform: scaleY(1);
+    }
+
+    .interes-content {
+        display: flex;
+        align-items: center;
+    }
+
+    .interes-text {
+        color: #282828;
+        font-size: 1.1rem;
+        font-weight: 500;
+        font-family: "K2D", sans-serif;
+    }
+    .interes-card:hover .interes-text {
+        color: #fff;
+    }
+
+    @media (max-width: 768px) {
+        .intereses-section {
+            padding: 3rem 1rem;
+        }
+
+        .intereses-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .interes-card {
+            padding: 1.25rem 1.5rem;
+        }
+
+        .interes-text {
+            font-size: 1rem;
+        }
+    }
+</style>

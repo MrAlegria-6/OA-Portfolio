@@ -1,11 +1,58 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+// src/pages/index.astro
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import AboutMe from "../components/AboutMe.astro";
+import Skills from "../components/Skills.astro";
+import WorkInterest from "../components/WorkInterest.astro";
+import Education from "../components/Education.astro";
+import Awards from "../components/Awards.astro";
+import Proyects from "../components/Proyects.astro"
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const softSkills = [
+  { name: "Trabajo en equipo" },
+  { name: "Comunicación efectiva" },
+  { name: "Resolución de problemas" },
+  { name: "Adaptabilidad" },
+  { name: "Pensamiento crítico" },
+];
+
+const technicalSkills = [
+  { name: "Dominio del DOM y Astro" },
+  { name: "React / Next.js" },
+  { name: "Integración de APIs" },
+  { name: "Python / Django" },
+  { name: "Uso de Git y Github" },
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Oscar Alegría - Full-Stack Developer">
+  <Header />
+
+  <main>
+    <Hero
+      name="Oscar Alegría"
+      title="Full-Stack Developer"
+      description="I specialize in creating responsive, efficient, and visually appealing web interfaces. My goal is to combine design precision with clean and structured code to deliver seamless digital experiences. I’m continuously improving my technical and creative skills to bring ideas to life through modern web technologies."
+      imageUrl="/OA.jpeg"
+    />
+
+    <AboutMe
+      title="About Me"
+      description=" I am a passionate Full-Stack developer with a strong interest in technology and continuous learning. I enjoy creating efficient and elegant solutions by combining intuitive interface design with a solid, functional back-end. I am practical, adaptable, and results-driven, always seeking to optimize processes and deliver value in every project I work on. I thrive both in collaborative environments and when working independently, approaching challenges with creativity and critical thinking."
+    />
+
+    <Skills softSkills={softSkills} technicalSkills={technicalSkills} />
+    <WorkInterest />
+    <Education />
+    <Awards />
+    <Proyects />
+  </main>
 </Layout>
+
+<style>
+  main {
+    position: relative;
+  }
+</style>

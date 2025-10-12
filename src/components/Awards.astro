@@ -1,0 +1,463 @@
+---
+// src/components/LogrosReconocimientos.astro
+const logros = [
+  {
+    tipo: "Certificación",
+    titulo: "AWS Solutions Architect Associate",
+    organizacion: "Amazon Web Services",
+    fecha: "2023",
+    descripcion: "Certificación profesional en arquitectura de soluciones en la nube",
+    icono: "🏆",
+    color: "#FF9900"
+  },
+  {
+    tipo: "Premio",
+    titulo: "Mejor Proyecto Innovador",
+    organizacion: "Hackathon Nacional 2023",
+    fecha: "Octubre 2023",
+    descripcion: "Primer lugar en categoría de innovación tecnológica",
+    icono: "🥇",
+    color: "#FFD700"
+  },
+  {
+    tipo: "Certificación",
+    titulo: "Google Cloud Professional",
+    organizacion: "Google Cloud",
+    fecha: "2024",
+    descripcion: "Certificación en desarrollo de aplicaciones en GCP",
+    icono: "☁️",
+    color: "#4285F4"
+  },
+  {
+    tipo: "Reconocimiento",
+    titulo: "Contribuidor Open Source",
+    organizacion: "GitHub",
+    fecha: "2023 - 2024",
+    descripcion: "Top contribuidor en proyectos de código abierto",
+    icono: "⭐",
+    color: "#764ba2"
+  },
+  {
+    tipo: "Premio",
+    titulo: "Desarrollador del Año",
+    organizacion: "Tech Company Inc.",
+    fecha: "2023",
+    descripcion: "Reconocimiento por excelencia en desarrollo de software",
+    icono: "🏅",
+    color: "#e74c3c"
+  }
+];
+
+const categorias = ["Todos", "Certificación", "Premio", "Reconocimiento"];
+---
+
+<section class="logros-section">
+  <div class="logros-header">
+    <h2 class="logros-title">Logros y Reconocimientos</h2>
+    <p class="logros-subtitle">
+      Certificaciones, premios y reconocimientos que validan mi experiencia y dedicación profesional
+    </p>
+  </div>
+
+  <!-- Filtros -->
+  <div class="filtros-container">
+    {categorias.map((categoria) => (
+      <button class="filtro-btn" data-filter={categoria.toLowerCase()}>
+        {categoria}
+      </button>
+    ))}
+  </div>
+
+  <!-- Grid de Logros -->
+  <div class="logros-grid">
+    {logros.map((logro) => (
+      <article class="logro-card" data-tipo={logro.tipo.toLowerCase()}>
+        <div class="logro-badge" style={`background: ${logro.color}20; color: ${logro.color};`}>
+          <span class="logro-icono">{logro.icono}</span>
+          <span class="logro-tipo">{logro.tipo}</span>
+        </div>
+
+        <div class="logro-content">
+          <h3 class="logro-titulo">{logro.titulo}</h3>
+          <p class="logro-organizacion">{logro.organizacion}</p>
+          <p class="logro-fecha">{logro.fecha}</p>
+          
+          <div class="logro-divider"></div>
+          
+          <p class="logro-descripcion">{logro.descripcion}</p>
+        </div>
+
+        <div class="logro-shine"></div>
+      </article>
+    ))}
+  </div>
+
+  <!-- Estadísticas -->
+  <div class="stats-container">
+    <div class="stat-item">
+      <span class="stat-number">{logros.filter(l => l.tipo === "Certificación").length}</span>
+      <span class="stat-label">Certificaciones</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">{logros.filter(l => l.tipo === "Premio").length}</span>
+      <span class="stat-label">Premios</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">{logros.filter(l => l.tipo === "Reconocimiento").length}</span>
+      <span class="stat-label">Reconocimientos</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .logros-section {
+    padding: 5rem 2rem;
+    background: whitesmoke;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .logros-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .logros-title {
+    color: #262525;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: "K2D", sans-serif;
+    background: #262525;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .logros-subtitle {
+    color: #262525;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Filtros */
+  .filtros-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+.filtro-btn {
+  background: #2a2a2a;
+  color: whitesmoke;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "K2D", sans-serif;
+  display: inline-block;
+}
+
+.filtro-btn:hover,
+.filtro-btn.active {
+  background: linear-gradient(135deg, #383838 0%, #FFD700 100%);
+  color: whitesmoke;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+
+  /* Grid de Logros */
+  .logros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .logro-card {
+    background: #2a2a2a;
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .logro-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(102, 126, 234, 0.1),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  .logro-card:hover::before {
+    left: 100%;
+  }
+
+  .logro-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(102, 126, 234, 0.4);
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.4),
+      0 0 20px rgba(102, 126, 234, 0.2);
+  }
+
+  .logro-card.hidden {
+    display: none;
+  }
+
+  .logro-shine {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .logro-card:hover .logro-shine {
+    opacity: 1;
+  }
+
+  /* Badge */
+  .logro-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-family: "K2D", sans-serif;
+  }
+
+  .logro-icono {
+    font-size: 1.5rem;
+  }
+
+  .logro-tipo {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Contenido */
+  .logro-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .logro-titulo {
+    color: #fff;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.3;
+    font-family: "K2D", sans-serif;
+  }
+
+  .logro-organizacion {
+    color: #b0b0b0;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .logro-fecha {
+    color: #667eea;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .logro-divider {
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+    margin: 1.25rem 0;
+  }
+
+  .logro-descripcion {
+    color: #d0d0d0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Estadísticas */
+  .stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 3rem;
+    background: #383838;
+    border-radius: 20px;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(42, 42, 42, 0.5);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .stat-item:hover {
+    transform: translateY(-4px);
+    background: rgba(42, 42, 42, 0.8);
+  }
+
+  .stat-number {
+    display: block;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    background: whitesmoke;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: "K2D", sans-serif;
+  }
+
+  .stat-label {
+    color: whitesmoke;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .logros-section {
+      padding: 3rem 1rem;
+    }
+
+    .logros-title {
+      font-size: 1.75rem;
+    }
+
+    .logros-subtitle {
+      font-size: 0.95rem;
+    }
+
+    .logros-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .filtros-container {
+      gap: 0.5rem;
+    }
+
+    .filtro-btn {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.85rem;
+    }
+
+    .stats-container {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 2rem 1rem;
+      gap: 1rem;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filtros = document.querySelectorAll('.filtro-btn');
+    const cards = document.querySelectorAll('.logro-card');
+
+    // Activar el primer filtro por defecto
+    filtros[0]?.classList.add('active');
+
+    filtros.forEach(filtro => {
+      filtro.addEventListener('click', () => {
+        // Remover active de todos los filtros
+        filtros.forEach(f => f.classList.remove('active'));
+        
+        // Agregar active al filtro clickeado
+        filtro.classList.add('active');
+
+        const filterValue = filtro.getAttribute('data-filter');
+
+        cards.forEach(card => {
+          if (filterValue === 'todos') {
+            card.classList.remove('hidden');
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'scale(1)';
+            }, 10);
+          } else {
+            const cardTipo = card.getAttribute('data-tipo');
+            
+            if (cardTipo === filterValue) {
+              card.classList.remove('hidden');
+              setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+              }, 10);
+            } else {
+              card.style.opacity = '0';
+              card.style.transform = 'scale(0.9)';
+              setTimeout(() => {
+                card.classList.add('hidden');
+              }, 300);
+            }
+          }
+        });
+      });
+    });
+
+    // Animación de entrada inicial
+    cards.forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      
+      setTimeout(() => {
+        card.style.transition = 'all 0.4s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, index * 100);
+    });
+  });
+</script>
