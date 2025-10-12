@@ -1,6 +1,4 @@
 ---
-
-
 interface Props {
   title: string;
   description?: string;
@@ -21,12 +19,32 @@ import "@fontsource/k2d";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>OA-Portfolio</title>
+    <title>{title}</title>
   </head>
   <body>
     <div class="content">
       <slot />
     </div>
+
+    <!-- 🌗 Script del modo oscuro -->
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        const html = document.documentElement;
+        const savedTheme = localStorage.getItem("theme");
+
+        if (savedTheme === "dark") {
+          html.classList.add("dark");
+        }
+
+        window.toggleTheme = function () {
+          html.classList.toggle("dark");
+          localStorage.setItem(
+            "theme",
+            html.classList.contains("dark") ? "dark" : "light"
+          );
+        };
+      });
+    </script>
   </body>
 </html>
 
@@ -37,19 +55,33 @@ import "@fontsource/k2d";
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   max-width: 100vw;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* 🎨 Variables de color claras */
+:root {
+  --bg: whitesmoke;
+  --text: #1f1f1f;
+  --accent: #d97706;
+}
+
+/* 🌙 Variables de color oscuras */
+.dark {
+  --bg: #0f172a;
+  --text: #f1f5f9;
+  --accent: #fbbf24;
 }
 
 body {
   font-family: "K2D", sans-serif;
-  background: whitesmoke;
-  color: #fff;
+  background: var(--bg);
+  color: var(--text);
   min-height: 100vh;
-}
-
-html {
-  scroll-behavior: smooth;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 </style>
+
