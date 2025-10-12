@@ -1,5 +1,5 @@
 ---
-// src/components/AboutMe.astro
+
 interface Props {
   title: string;
   description: string;
@@ -11,6 +11,7 @@ const { title, description } = Astro.props;
 <section id="sobre-mi" class="about-section">
   <div class="container">
     <h2 class="section-title">{title}</h2>
+      <div class="divider"></div>
     <p class="about-description">{description}</p>
   </div>
 </section>
@@ -28,13 +29,21 @@ const { title, description } = Astro.props;
   }
 
   .section-title {
-    font-size: 2.5rem;
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
     font-weight: 700;
     margin-bottom: 2rem;
      background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+   .divider {
+    height: 4px;
+    width: 8rem;
+    background: linear-gradient(90deg, #fbbf24, #d97706);
+    margin: 1.5rem auto;
+    border-radius: 9999px;
   }
 
   .about-description {

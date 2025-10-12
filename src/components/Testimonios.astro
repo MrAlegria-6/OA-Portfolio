@@ -1,0 +1,432 @@
+---
+const testimonios = [
+    {
+        nombre: "Tomas Bonilla",
+        cargo: "Desarrollador Web",
+        foto: "",
+        estrellas: 5,
+        texto: "Excelente compañero de equipo. Siempre dispuesto a ayudar y con gran capacidad para resolver problemas complejos. Su profesionalismo y dedicación son inspiradores.",
+    },
+    {
+        nombre: "Alisson Acevedo",
+        cargo: "Graphic Designer",
+        foto: "",
+        estrellas: 5,
+        texto: "Su dedicación y atención al detalle son excepcionales. Un profesional en el que puedes confiar completamente para cualquier proyecto importante.",
+    },
+    {
+        nombre: "Melany Palma",
+        cargo: "Web Desginer",
+        foto: "",
+        estrellas: 4,
+        texto: "Comunicación clara y entrega de resultados de alta calidad. Ha sido un placer trabajar con él en múltiples proyectos. Siempre cumple con los plazos establecidos.",
+    },
+    {
+        nombre: "Christian Alfaro",
+        cargo: "Desarrollador Back-End",
+        foto: "",
+        estrellas: 5,
+        texto: "Aprende rápido y siempre está actualizado con las últimas tecnologías. Gran colaborador y mentor para los miembros más jóvenes del equipo.",
+
+    },
+    {
+        nombre: "Alejandro Arriola",
+        cargo: "Project Manager",
+        foto: "",
+        estrellas: 5,
+        texto: "Su capacidad para gestionar múltiples tareas y proyectos es impresionante. Siempre mantiene una actitud positiva y proactiva, lo que mejora el ambiente de trabajo.",
+    },
+    {
+        nombre: "Débora Martinez",
+        cargo: "UX/UI Designer",
+        foto: "",
+        estrellas: 4,
+        texto: "Un profesional confiable y eficiente. Su enfoque en la calidad y la satisfacción del cliente es evidente en cada proyecto que maneja.",
+    },
+    {
+        nombre: "Keyli Melgar",
+        cargo: "Graphic Designer",
+        foto: "",
+        estrellas: 5,
+        texto: "Su ética de trabajo y compromiso con la excelencia son ejemplares. Siempre busca soluciones innovadoras y mejora continuamente sus habilidades técnicas.",
+    }
+
+];
+
+---
+
+<div class="testimonios-container">
+    <div class="header">
+        <h2 class="titulo">Peer Reviews</h2>
+        <p class="subtitulo">Hear what my teammates say about working with me</p>
+    </div>
+
+    <div class="carousel-wrapper">
+        <button class="nav-btn prev" id="prevBtn">
+            <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+
+        <div class="carousel-content">
+            <div class="testimonios-track" id="track">
+                {
+                    testimonios.map((testimonio) => (
+                        <div class="testimonio-card">
+                            <div class="card-inner">
+                                <div class="foto-container">
+                                    <img
+                                        src={testimonio.foto}
+                                        alt={testimonio.nombre}
+                                        class="foto"
+                                    />
+                                </div>
+
+                                <h3 class="nombre">{testimonio.nombre}</h3>
+                                <p class="cargo">{testimonio.cargo}</p>
+
+                                <div class="estrellas">
+                                    {Array.from({ length: 5 }, (_, i) => (
+                                        <span
+                                            class={
+                                                i < testimonio.estrellas
+                                                    ? "star filled"
+                                                    : "star"
+                                            }
+                                        >
+                                            ★
+                                        </span>
+                                    ))}
+                                </div>
+
+                                <p class="texto">{testimonio.texto}</p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <button class="nav-btn next" id="nextBtn">
+            <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+            >
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+    </div>
+
+    <div class="dots" id="dots"></div>
+</div>
+
+<style>
+    .testimonios-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 20px;
+        background: whitesmoke;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .titulo {
+        font-size: 3rem;
+        background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+        font-weight: 800;
+    }
+
+    .subtitulo {
+        color: #282828;
+        font-size: 1.1rem;
+    }
+
+    .carousel-wrapper {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .carousel-content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .nav-btn.prev {
+        left: 0;
+    }
+
+    .nav-btn.next {
+        right: 0;
+    }
+
+    .testimonios-track {
+        display: flex;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .testimonio-card {
+        min-width: 100%;
+        padding: 0 20px;
+    }
+
+    .card-inner {
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 50px 40px;
+        box-shadow: 0 10px 60px rgba(0, 0, 0, 0.08);
+        border: 2px solid #f5f5f5;
+        transition: all 0.3s ease;
+    }
+
+    .card-inner:hover {
+        box-shadow: 0 15px 80px rgba(212, 175, 55, 0.15);
+        border-color: #d4af37;
+        transform: translateY(-5px);
+    }
+
+    .foto-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
+    }
+
+    .foto {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #d4af37;
+        box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+    }
+
+    .nombre {
+        text-align: center;
+        font-size: 1.5rem;
+        color: #1a1a1a;
+        margin-bottom: 5px;
+        font-weight: 700;
+    }
+
+    .cargo {
+        text-align: center;
+        color: #888;
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .estrellas {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-bottom: 25px;
+    }
+
+    .star {
+        font-size: 1.8rem;
+        color: #e0e0e0;
+        transition: all 0.2s ease;
+    }
+
+    .star.filled {
+        color: #d4af37;
+        text-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
+    }
+
+    .texto {
+        text-align: center;
+        color: #444;
+        font-size: 1.05rem;
+        line-height: 1.8;
+        font-style: italic;
+        position: relative;
+        padding: 0 20px;
+    }
+
+    .texto::before {
+        content: '"';
+        position: absolute;
+        left: -10px;
+        top: -10px;
+        font-size: 4rem;
+        color: #d4af37;
+        opacity: 0.2;
+        font-family: Georgia, serif;
+    }
+
+    .nav-btn {
+        background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+        color: #fff;
+        border: none;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+    }
+
+    .nav-btn:hover {
+        transform: translateY(-60%);
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+    }
+
+    .nav-btn:active {
+        transform: scale(1);
+    }
+
+    .dots {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 40px;
+    }
+
+    .dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #e0e0e0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .dot:hover {
+        background: #d4af37;
+        opacity: 0.6;
+    }
+
+    .dot.active {
+        background: #d4af37;
+        transform: scale(1.3);
+        border-color: #f0c649;
+    }
+
+    @media (max-width: 768px) {
+        .testimonios-container {
+            padding: 60px 15px;
+        }
+
+        .titulo {
+            font-size: 2.2rem;
+        }
+
+        .subtitulo {
+            font-size: 1rem;
+        }
+
+        .carousel-wrapper {
+            gap: 15px;
+        }
+
+        .card-inner {
+            padding: 40px 25px;
+        }
+
+        .foto {
+            width: 100px;
+            height: 100px;
+        }
+
+        .nav-btn {
+            width: 45px;
+            height: 45px;
+        }
+
+        .nombre {
+            font-size: 1.3rem;
+        }
+
+        .texto {
+            font-size: 0.95rem;
+            padding: 0 10px;
+        }
+
+        .star {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
+<script>
+    const track = document.getElementById("track");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const dotsContainer = document.getElementById("dots");
+
+    let currentIndex = 0;
+    const totalSlides = track.children.length;
+
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement("div");
+        dot.className = "dot";
+        if (i === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    }
+
+    function updateCarousel() {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+        document.querySelectorAll(".dot").forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentIndex);
+        });
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+    }
+
+    prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    });
+
+    nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        } else if (e.key === "ArrowRight") {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+    });
+
+    setInterval(() => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateCarousel();
+}, 7000);
+</script>

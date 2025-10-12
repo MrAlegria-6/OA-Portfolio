@@ -2,109 +2,98 @@
 // src/components/LogrosReconocimientos.astro
 const logros = [
   {
-    tipo: "Certificación",
-    titulo: "AWS Solutions Architect Associate",
-    organizacion: "Amazon Web Services",
-    fecha: "2023",
-    descripcion: "Certificación profesional en arquitectura de soluciones en la nube",
-    icono: "🏆",
-    color: "#FF9900"
-  },
-  {
-    tipo: "Premio",
-    titulo: "Mejor Proyecto Innovador",
-    organizacion: "Hackathon Nacional 2023",
-    fecha: "Octubre 2023",
-    descripcion: "Primer lugar en categoría de innovación tecnológica",
-    icono: "🥇",
-    color: "#FFD700"
-  },
-  {
-    tipo: "Certificación",
-    titulo: "Google Cloud Professional",
-    organizacion: "Google Cloud",
+    tipo: "Certification",
+    titulo: "Microsoft Office Specialist: Excel Associate (microsoft 365 Apps)",
+    organizacion: "Certiport",
     fecha: "2024",
-    descripcion: "Certificación en desarrollo de aplicaciones en GCP",
-    icono: "☁️",
-    color: "#4285F4"
+    descripcion:
+      "Certification about the basic and fundamental skills needed to create and manage worksheets and workbooks, create cells and ranges, create tables, apply formulas and functions, and create charts and objects.",
+    icono: "📗",
+    color: "linear-gradient(135deg, #fbbf24 0%, #d97706 100%)",
   },
   {
-    tipo: "Reconocimiento",
-    titulo: "Contribuidor Open Source",
-    organizacion: "GitHub",
-    fecha: "2023 - 2024",
-    descripcion: "Top contribuidor en proyectos de código abierto",
-    icono: "⭐",
-    color: "#764ba2"
+    tipo: "Certification",
+    titulo: "IT specialist - Python",
+    organizacion: "Certiport",
+    fecha: "2024",
+    descripcion: "Certification about the fundamental skills needed to write and execute Python code, including knowledge of data types, control structures, functions, and error handling.",
+    icono: "🐍",
+    color: "background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%)",
   },
-  {
-    tipo: "Premio",
-    titulo: "Desarrollador del Año",
-    organizacion: "Tech Company Inc.",
-    fecha: "2023",
-    descripcion: "Reconocimiento por excelencia en desarrollo de software",
-    icono: "🏅",
-    color: "#e74c3c"
-  }
 ];
 
-const categorias = ["Todos", "Certificación", "Premio", "Reconocimiento"];
+const categorias = ["All", "Certification", "Award", "Recognition"];
 ---
 
 <section class="logros-section">
   <div class="logros-header">
-    <h2 class="logros-title">Logros y Reconocimientos</h2>
+    <h2 class="logros-title">Achievements and Recognitions</h2>
+    <div class="divider"></div>
     <p class="logros-subtitle">
-      Certificaciones, premios y reconocimientos que validan mi experiencia y dedicación profesional
+      Certifications, awards, and recognitions that validate my experience and
+      professional dedication.
     </p>
   </div>
 
   <!-- Filtros -->
   <div class="filtros-container">
-    {categorias.map((categoria) => (
-      <button class="filtro-btn" data-filter={categoria.toLowerCase()}>
-        {categoria}
-      </button>
-    ))}
+    {
+      categorias.map((categoria) => (
+        <button class="filtro-btn" data-filter={categoria.toLowerCase()}>
+          {categoria}
+        </button>
+      ))
+    }
   </div>
 
   <!-- Grid de Logros -->
   <div class="logros-grid">
-    {logros.map((logro) => (
-      <article class="logro-card" data-tipo={logro.tipo.toLowerCase()}>
-        <div class="logro-badge" style={`background: ${logro.color}20; color: ${logro.color};`}>
-          <span class="logro-icono">{logro.icono}</span>
-          <span class="logro-tipo">{logro.tipo}</span>
-        </div>
+    {
+      logros.map((logro) => (
+        <article class="logro-card" data-tipo={logro.tipo.toLowerCase()}>
+          <div
+            class="logro-badge"
+            style={`background: ${logro.color}20; color: ${logro.color};`}
+          >
+            <span class="logro-icono">{logro.icono}</span>
+            <span class="logro-tipo">{logro.tipo}</span>
+          </div>
 
-        <div class="logro-content">
-          <h3 class="logro-titulo">{logro.titulo}</h3>
-          <p class="logro-organizacion">{logro.organizacion}</p>
-          <p class="logro-fecha">{logro.fecha}</p>
-          
-          <div class="logro-divider"></div>
-          
-          <p class="logro-descripcion">{logro.descripcion}</p>
-        </div>
+          <div class="logro-content">
+            <h3 class="logro-titulo">{logro.titulo}</h3>
+            <p class="logro-organizacion">{logro.organizacion}</p>
+            <p class="logro-fecha">{logro.fecha}</p>
 
-        <div class="logro-shine"></div>
-      </article>
-    ))}
+            <div class="logro-divider" />
+
+            <p class="logro-descripcion">{logro.descripcion}</p>
+          </div>
+
+          <div class="logro-shine" />
+        </article>
+      ))
+    }
   </div>
 
   <!-- Estadísticas -->
   <div class="stats-container">
     <div class="stat-item">
-      <span class="stat-number">{logros.filter(l => l.tipo === "Certificación").length}</span>
-      <span class="stat-label">Certificaciones</span>
+      <span class="stat-number"
+        >{logros.filter((l) => l.tipo === "Certification").length}</span
+      >
+      <span class="stat-label">Certifications</span>
     </div>
     <div class="stat-item">
-      <span class="stat-number">{logros.filter(l => l.tipo === "Premio").length}</span>
-      <span class="stat-label">Premios</span>
+      <span class="stat-number"
+        >{logros.filter((l) => l.tipo === "Award").length}</span
+      >
+      <span class="stat-label">Awards</span>
     </div>
     <div class="stat-item">
-      <span class="stat-number">{logros.filter(l => l.tipo === "Reconocimiento").length}</span>
-      <span class="stat-label">Reconocimientos</span>
+      <span class="stat-number"
+        >{logros.filter((l) => l.tipo === "Recognition").length}</span
+      >
+      <span class="stat-label">Recognitions</span>
     </div>
   </div>
 </section>
@@ -121,14 +110,20 @@ const categorias = ["Todos", "Certificación", "Premio", "Reconocimiento"];
     text-align: center;
     margin-bottom: 3rem;
   }
+  .divider {
+    height: 4px;
+    width: 8rem;
+    background: linear-gradient(90deg, #fbbf24, #d97706);
+    margin: 1.5rem auto;
+    border-radius: 9999px;
+  }
 
   .logros-title {
-    color: #262525;
-    font-size: 2.5rem;
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
     font-weight: 700;
     margin-bottom: 1rem;
     font-family: "K2D", sans-serif;
-    background: #262525;
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -151,28 +146,27 @@ const categorias = ["Todos", "Certificación", "Premio", "Reconocimiento"];
     margin-bottom: 2rem;
   }
 
-.filtro-btn {
-  background: #2a2a2a;
-  color: whitesmoke;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: "K2D", sans-serif;
-  display: inline-block;
-}
+  .filtro-btn {
+    background: whitesmoke;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "K2D", sans-serif;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
 
-.filtro-btn:hover,
-.filtro-btn.active {
-  background: linear-gradient(135deg, #383838 0%, #FFD700 100%);
-  color: whitesmoke;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
+  .filtro-btn:hover,
+  .filtro-btn.active {
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    color: whitesmoke;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  }
 
   /* Grid de Logros */
   .logros-grid {
@@ -183,7 +177,7 @@ const categorias = ["Todos", "Certificación", "Premio", "Reconocimiento"];
   }
 
   .logro-card {
-    background: #2a2a2a;
+    background: whitesmoke;
     border-radius: 16px;
     padding: 2rem;
     position: relative;
@@ -191,6 +185,7 @@ const categorias = ["Todos", "Certificación", "Premio", "Reconocimiento"];
     border: 1px solid rgba(102, 126, 234, 0.1);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    color: #282828;
   }
 
   .logro-card::before {
@@ -200,13 +195,9 @@ const categorias = ["Todos", "Certificación", "Premio", "Reconocimiento"];
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(102, 126, 234, 0.1),
-      transparent
-    );
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
     transition: left 0.5s ease;
+    z-index: 0;
   }
 
   .logro-card:hover::before {
@@ -216,15 +207,96 @@ const categorias = ["Todos", "Certificación", "Premio", "Reconocimiento"];
   .logro-card:hover {
     transform: translateY(-8px);
     border-color: rgba(102, 126, 234, 0.4);
-    box-shadow: 
+    box-shadow:
       0 20px 40px rgba(0, 0, 0, 0.4),
       0 0 20px rgba(102, 126, 234, 0.2);
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    color: white;
   }
 
-  .logro-card.hidden {
-    display: none;
+  .logro-content {
+    position: relative;
+    z-index: 1;
   }
 
+  .logro-card:hover .logro-titulo,
+  .logro-card:hover .logro-organizacion,
+  .logro-card:hover .logro-fecha,
+  .logro-card:hover .logro-descripcion,
+  .logro-card:hover .logro-tipo {
+    color: white;
+  }
+
+  /* Badge */
+  .logro-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-family: "K2D", sans-serif;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+  }
+
+  .logro-card:hover .logro-badge {
+    color: white;
+  }
+
+  .logro-icono {
+    font-size: 1.5rem;
+  }
+
+  .logro-tipo {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #282828;
+  }
+
+  /* Contenido */
+  .logro-titulo {
+    color: #282828;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.3;
+    font-family: "K2D", sans-serif;
+  }
+
+  .logro-organizacion {
+    color: #282828;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .logro-fecha {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+    color: #282828;
+  }
+
+  .logro-divider {
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    border-radius: 2px;
+    margin: 1.25rem 0;
+  }
+
+  .logro-descripcion {
+    color: #282828;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Shine effect */
   .logro-shine {
     position: absolute;
     top: -50%;
@@ -244,70 +316,8 @@ const categorias = ["Todos", "Certificación", "Premio", "Reconocimiento"];
     opacity: 1;
   }
 
-  /* Badge */
-  .logro-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    font-family: "K2D", sans-serif;
-  }
-
-  .logro-icono {
-    font-size: 1.5rem;
-  }
-
-  .logro-tipo {
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  /* Contenido */
-  .logro-content {
-    position: relative;
-    z-index: 1;
-  }
-
-  .logro-titulo {
-    color: #fff;
-    font-size: 1.35rem;
-    font-weight: 700;
-    margin: 0 0 0.75rem 0;
-    line-height: 1.3;
-    font-family: "K2D", sans-serif;
-  }
-
-  .logro-organizacion {
-    color: #b0b0b0;
-    font-size: 1rem;
-    font-weight: 500;
-    margin: 0 0 0.5rem 0;
-  }
-
-  .logro-fecha {
-    color: #667eea;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin: 0;
-  }
-
-  .logro-divider {
-    width: 50px;
-    height: 3px;
-    background: linear-gradient(90deg, #667eea, #764ba2);
-    border-radius: 2px;
-    margin: 1.25rem 0;
-  }
-
-  .logro-descripcion {
-    color: #d0d0d0;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 0;
+  .logro-card.hidden {
+    display: none;
   }
 
   /* Estadísticas */
@@ -316,40 +326,45 @@ const categorias = ["Todos", "Certificación", "Premio", "Reconocimiento"];
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
     padding: 3rem;
-    background: #383838;
+    background: whitesmoke;
     border-radius: 20px;
     border: 1px solid rgba(102, 126, 234, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   }
 
   .stat-item {
     text-align: center;
     padding: 1.5rem;
-    background: rgba(42, 42, 42, 0.5);
+    background: whitesmoke;
     border-radius: 12px;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    color: #282828;
   }
 
   .stat-item:hover {
     transform: translateY(-4px);
-    background: rgba(42, 42, 42, 0.8);
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
   }
 
   .stat-number {
     display: block;
-    color: #fff;
     font-size: 3rem;
     font-weight: 700;
     line-height: 1;
     margin-bottom: 0.5rem;
-    background: whitesmoke;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
     font-family: "K2D", sans-serif;
+    color: #282828;
+  }
+
+  .stat-item:hover .stat-number,
+  .stat-item:hover .stat-label {
+    color: white;
   }
 
   .stat-label {
-    color: whitesmoke;
+    color: #282828;
     font-size: 0.95rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -401,46 +416,47 @@ const categorias = ["Todos", "Certificación", "Premio", "Reconocimiento"];
     }
   }
 </style>
-
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const filtros = document.querySelectorAll('.filtro-btn');
-    const cards = document.querySelectorAll('.logro-card');
+  document.addEventListener("DOMContentLoaded", () => {
+    const filters = document.querySelectorAll(".filtro-btn");
+    const cards = document.querySelectorAll(".logro-card");
 
-    // Activar el primer filtro por defecto
-    filtros[0]?.classList.add('active');
+    // ✅ Set the first filter (All) as active by default
+    filters[0]?.classList.add("active");
 
-    filtros.forEach(filtro => {
-      filtro.addEventListener('click', () => {
-        // Remover active de todos los filtros
-        filtros.forEach(f => f.classList.remove('active'));
-        
-        // Agregar active al filtro clickeado
-        filtro.classList.add('active');
+    filters.forEach((filter) => {
+      filter.addEventListener("click", () => {
+        // Remove active state from all filters
+        filters.forEach((f) => f.classList.remove("active"));
 
-        const filterValue = filtro.getAttribute('data-filter');
+        // Add active to the clicked filter
+        filter.classList.add("active");
 
-        cards.forEach(card => {
-          if (filterValue === 'todos') {
-            card.classList.remove('hidden');
+        const filterValue = filter.getAttribute("data-filter").toLowerCase();
+
+        cards.forEach((card) => {
+          const cardType = card.getAttribute("data-tipo").toLowerCase();
+
+          if (filterValue === "all") {
+            // Show all cards
+            card.classList.remove("hidden");
             setTimeout(() => {
-              card.style.opacity = '1';
-              card.style.transform = 'scale(1)';
+              card.style.opacity = "1";
+              card.style.transform = "scale(1)";
             }, 10);
           } else {
-            const cardTipo = card.getAttribute('data-tipo');
-            
-            if (cardTipo === filterValue) {
-              card.classList.remove('hidden');
+            // Show only cards that match the filter
+            if (cardType === filterValue) {
+              card.classList.remove("hidden");
               setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'scale(1)';
+                card.style.opacity = "1";
+                card.style.transform = "scale(1)";
               }, 10);
             } else {
-              card.style.opacity = '0';
-              card.style.transform = 'scale(0.9)';
+              card.style.opacity = "0";
+              card.style.transform = "scale(0.9)";
               setTimeout(() => {
-                card.classList.add('hidden');
+                card.classList.add("hidden");
               }, 300);
             }
           }
@@ -448,15 +464,15 @@ const categorias = ["Todos", "Certificación", "Premio", "Reconocimiento"];
       });
     });
 
-    // Animación de entrada inicial
+    // ✨ Initial entry animation
     cards.forEach((card, index) => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(20px)';
-      
+      card.style.opacity = "0";
+      card.style.transform = "translateY(20px)";
+
       setTimeout(() => {
-        card.style.transition = 'all 0.4s ease';
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
+        card.style.transition = "all 0.4s ease";
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
       }, index * 100);
     });
   });

@@ -2,36 +2,36 @@
 const proyectos = [
   {
     id: 1,
-    titulo: "E-Commerce Platform",
-    categoria: "Desarrollo Full Stack",
-    descripcion: "Plataforma completa de comercio electrónico con carrito de compras, pasarela de pagos y panel de administración.",
-    tecnologias: ["React", "Node.js", "MongoDB", "Stripe"],
-    imagen: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop",
+    titulo: "Cheapy Table",
+    categoria: "Desarrollo Mobile",
+    descripcion: "Cheapy Table is a smart app that helps you discover healthy and affordable meals near you. Browse nutritious recipes, track your diet, and enjoy tasty food without breaking your budget.",
+    tecnologias: ["PowerApps",],
+    imagen: "./Cheapy.png",
+    color: "#FFD700",
+    link: "https://www.figma.com/design/GwydhJa1ErgEWTzq3rep56/Cheapy-Table?node-id=0-1&p=f&t=sAulW1bPs30DXBVJ-0",
+    github: "Not available yet :C"
+  },
+  {
+    id: 2,
+    titulo: "InnVate",
+    categoria: "Desarrollo Web",
+    descripcion: "InnVate is a platform that connects innovators, entrepreneurs, and investors to foster collaboration and drive technological advancements. Share ideas, find partners, and access resources to turn your vision into reality.",
+    tecnologias: ["Html", "CSS", "JavaScript", "TailWind","BootStrap"],
+    imagen: "./InnVate.png",
     color: "#FFD700",
     link: "#",
     github: "#"
   },
   {
-    id: 2,
-    titulo: "Dashboard Analytics",
-    categoria: "Data Visualization",
-    descripcion: "Sistema de análisis de datos en tiempo real con visualizaciones interactivas y reportes personalizables.",
-    tecnologias: ["Vue.js", "D3.js", "Python", "PostgreSQL"],
-    imagen: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-    color: "#C0C0C0",
-    link: "#",
-    github: "#"
-  },
-  {
     id: 3,
-    titulo: "AI Chat Assistant",
-    categoria: "Inteligencia Artificial",
-    descripcion: "Asistente virtual inteligente con procesamiento de lenguaje natural y aprendizaje automático.",
-    tecnologias: ["Python", "TensorFlow", "FastAPI", "React"],
-    imagen: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
-    color: "#B8860B",
-    link: "#",
-    github: "#"
+    titulo: "IonSpark",
+    categoria: "Desarrollo Full Stack",
+    descripcion: "IonSpark is a drone project that captures real-time video and analyzes data on tilt, shadows, and renewable energy efficiency to provide actionable insights.                       ",
+    tecnologias: ["React", "NodeJS", "Django", "NextJS"],
+    imagen: "./IonSpark.png",
+    color: "#FFD700",
+    link: "https://www.figma.com/design/uU5n1XdfUU3tLh5q2TTb16/IonSpark?node-id=0-1&p=f&t=aYnwZq31Pgr0UKXy-0",
+    github:  "https://github.com/MrAlegria-6/IonSparkProject.git"
   }
 ];
 ---
@@ -41,12 +41,11 @@ const proyectos = [
     <!-- Header -->
     <div class="header">
       <h2 class="title">
-        Proyectos <span class="highlight">Destacados</span>
+        My <span class="highlight">Proyects</span>
       </h2>
       <div class="divider"></div>
       <p class="subtitle">
-        Explora una selección de mis proyectos más recientes, donde la innovación 
-        y el diseño se encuentran con la tecnología.
+      Explore a selection of my most recent projects, where innovation and design meet technology.
       </p>
     </div>
 
@@ -66,15 +65,6 @@ const proyectos = [
               class="project-image"
             />
             <div class="image-overlay"></div>
-            
-            <!-- Floating Icon -->
-            <div class="icon-badge" style={`background-color: ${proyecto.color};`}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-                <polyline points="16 18 22 12 16 6"></polyline>
-                <polyline points="8 6 2 12 8 18"></polyline>
-              </svg>
-            </div>
-
             <!-- Category Badge -->
             <div class="category-badge">
               <span>{proyecto.categoria}</span>
@@ -119,26 +109,13 @@ const proyectos = [
         </article>
       ))}
     </div>
-
-    <!-- CTA Button -->
-    <div class="cta-container">
-      <a href="#todos-proyectos" class="cta-button">
-        Ver Todos los Proyectos
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-          <polyline points="15 3 21 3 21 9"></polyline>
-          <line x1="10" y1="14" x2="21" y2="3"></line>
-        </svg>
-      </a>
-    </div>
-  </div>
 </section>
 
 <style>
   .proyectos-showcase {
     min-height: 100vh;
-    background: linear-gradient(135deg, #ffffff 0%, #f7fafc 50%, #edf2f7 100%);
-    padding: 5rem 1.5rem;
+    background: whitesmoke;
+    padding: 6rem 2rem;
   }
 
   .container {
@@ -210,6 +187,8 @@ const proyectos = [
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     animation: fadeInUp 0.6s ease-out both;
+    display: flex;
+    flex-direction: column;
   }
 
   @keyframes fadeInUp {
@@ -226,18 +205,6 @@ const proyectos = [
   .project-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  }
-
-  .corner-decoration {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 8rem;
-    height: 8rem;
-    opacity: 0.1;
-    transform: rotate(45deg) translate(4rem, -4rem);
-    transition: all 0.5s ease;
-    z-index: 1;
   }
 
   .project-card:hover .corner-decoration {
@@ -316,7 +283,13 @@ const proyectos = [
     padding: 1.5rem;
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
   }
+  .actions {
+  margin-top: auto;
+}
 
   .project-title {
     font-size: 1.5rem;
@@ -327,11 +300,15 @@ const proyectos = [
   }
 
   .project-card:hover .project-title {
-    color: #d97706;
-  }
+  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
 
   .project-description {
-    color: #718096;
+    color: #282828;
     font-size: 0.875rem;
     line-height: 1.6;
     margin-bottom: 1rem;
@@ -348,7 +325,7 @@ const proyectos = [
   .tech-tag {
     padding: 0.25rem 0.75rem;
     background: #f7fafc;
-    color: #4a5568;
+    color: #282828;
     font-size: 0.75rem;
     font-weight: 500;
     border-radius: 9999px;
@@ -356,8 +333,8 @@ const proyectos = [
   }
 
   .tech-tag:hover {
-    background: #fef3c7;
-    color: #d97706;
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    color: whitesmoke;
   }
 
   /* Actions */
@@ -372,8 +349,8 @@ const proyectos = [
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
-    color: white;
+    background: whitesmoke;
+    color: #282828;
     padding: 0.625rem 1rem;
     border-radius: 0.5rem;
     font-weight: 600;
@@ -384,9 +361,10 @@ const proyectos = [
   }
 
   .btn-primary:hover {
-    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-    box-shadow: 0 6px 16px rgba(217, 119, 6, 0.4);
+    box-shadow: 0 6px 16px linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
     transform: scale(1.05);
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    color: whitesmoke;
   }
 
   .btn-secondary {
@@ -395,17 +373,18 @@ const proyectos = [
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #cbd5e0;
+    border: 2px solid whitesmoke;
     color: #4a5568;
     border-radius: 0.5rem;
     text-decoration: none;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
   }
 
   .btn-secondary:hover {
-    border-color: #fbbf24;
-    color: #d97706;
-    background: #fef3c7;
+    color: whitesmoke;
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    box-shadow: 0 6px 16px linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
   }
 
   /* Accent Line */
@@ -424,47 +403,6 @@ const proyectos = [
     transform: scaleX(1);
   }
 
-  /* Glow Effect */
-  .glow-effect {
-    position: absolute;
-    inset: 0;
-    border-radius: 1rem;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    z-index: -1;
-    filter: blur(40px);
-    transform: scale(0.95);
-  }
-
-  .project-card:hover .glow-effect {
-    opacity: 1;
-  }
-
-  /* CTA Button */
-  .cta-container {
-    text-align: center;
-    margin-top: 4rem;
-  }
-
-  .cta-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-    color: white;
-    border-radius: 9999px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  }
-
-  .cta-button:hover {
-    background: linear-gradient(135deg, #d97706 0%, #fbbf24 100%);
-    box-shadow: 0 15px 40px rgba(217, 119, 6, 0.3);
-    transform: scale(1.05);
-  }
 
   /* Responsive */
   @media (max-width: 768px) {

@@ -1,5 +1,5 @@
 ---
-// src/components/Hero.astro
+
 import StarfieldBackground from "../components/StarfieldBackground.astro";
 interface Props {
     name: string;
@@ -141,20 +141,21 @@ const {
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background: #383838;
+        background: whitesmoke;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #fff;
+        color: #282828;
         transition: all 0.3s ease;
         backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);;
     }
 
     .social-link:hover {
-        background:#ffd700;
+        background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
         transform: translateY(-5px);
         box-shadow: 0 10px 25px rgba(74, 158, 255, 0.3);
-        color: #262525;
+        color: whitesmoke;
     }
 
     @keyframes fadeIn {

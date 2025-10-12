@@ -1,8 +1,8 @@
 ---
-// src/components/Educacion.astro
+
 const educacion = [
   {
-    titulo: "Bachillerato Técnico en Contaduría",
+    titulo: "Technical Secondary Education in Accounting",
     institucion: "Instituto Nacional TECPAN",
     periodo: "2022 - 2025",
     descripcion:
@@ -19,7 +19,8 @@ const educacion = [
 ---
 
 <section class="educacion-section">
-  <h2 class="educacion-title">Educación</h2>
+  <h2 class="educacion-title">Education</h2>
+   <div class="divider"></div>
   <p class="educacion-description">
     My academic and professional background has allowed me to develop strong
     technical skills and stay up-to-date with the latest market technologies.
@@ -51,14 +52,23 @@ const educacion = [
 
 <style>
   .educacion-section {
-    padding: 4rem 2rem;
+    padding: 6rem 2rem;
     background: whitesmoke;
     max-width: 1200px;
     margin: 0 auto;
+    scroll-margin-top: 100px;
+  }
+
+  .divider {
+    height: 4px;
+    width: 8rem;
+    background: linear-gradient(90deg, #fbbf24, #d97706);
+    margin: 1.5rem auto;
+    border-radius: 9999px;
   }
 
   .educacion-title {
-    font-size: 2rem;
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
     font-weight: 600;
     text-align: center;
     margin-bottom: 1.5rem;
@@ -67,6 +77,7 @@ const educacion = [
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+     scroll-margin-top: 80px;
   }
 
   .educacion-description {

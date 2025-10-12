@@ -8,22 +8,25 @@ import Skills from "../components/Skills.astro";
 import WorkInterest from "../components/WorkInterest.astro";
 import Education from "../components/Education.astro";
 import Awards from "../components/Awards.astro";
-import Proyects from "../components/Proyects.astro"
+import Proyects from "../components/Proyects.astro";
+import Testimonios from "../components/Testimonios.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
 
 const softSkills = [
-  { name: "Trabajo en equipo" },
-  { name: "Comunicación efectiva" },
-  { name: "Resolución de problemas" },
-  { name: "Adaptabilidad" },
-  { name: "Pensamiento crítico" },
+  { name: "Teamwork" },
+  { name: "Effective Communication" },
+  { name: "Problem Solving" },
+  { name: "Adaptability" },
+  { name: "Critical Thinking" },
 ];
 
 const technicalSkills = [
-  { name: "Dominio del DOM y Astro" },
+  { name: "DOM and Astro" },
   { name: "React / Next.js" },
-  { name: "Integración de APIs" },
+  { name: "API Integration" },
   { name: "Python / Django" },
-  { name: "Uso de Git y Github" },
+  { name: "Git and Github" },
 ];
 ---
 
@@ -45,9 +48,18 @@ const technicalSkills = [
 
     <Skills softSkills={softSkills} technicalSkills={technicalSkills} />
     <WorkInterest />
-    <Education />
+    <section id="education">
+      <Education />
+    </section>
     <Awards />
-    <Proyects />
+    <section id="proyects">
+      <Proyects />
+    </section>
+    <Testimonios />
+    <section id="contact">
+      <Contact />
+    </section>
+    <Footer />
   </main>
 </Layout>
 
