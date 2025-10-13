@@ -35,7 +35,7 @@ const educacion = [
             <div class="timeline-header">
               <h3 class="timeline-titulo">{item.titulo}</h3>
               <button class="timeline-toggle" aria-label="Ver más">
-                <span class="toggle-icon">∨</span>
+                <span class="toggle-icon">+</span>
               </button>
             </div>
             <p class="timeline-institucion">{item.institucion}</p>
@@ -260,27 +260,37 @@ const educacion = [
 </style>
 
 <script>
-  // Funcionalidad de expansión para los detalles
+  // Expansión para los detalles al hacer click en el cuadro o el botón
   document.addEventListener("DOMContentLoaded", () => {
-    const toggleButtons = document.querySelectorAll(".timeline-toggle");
+    const timelineContents = document.querySelectorAll(".timeline-content");
 
-    toggleButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const content = button.closest(".timeline-content");
-        const details = content?.querySelector(".timeline-details");
-        const icon = button.querySelector(".toggle-icon");
+    timelineContents.forEach((content) => {
+      const button = content.querySelector(".timeline-toggle");
+      const details = content.querySelector(".timeline-details");
+      const icon = content.querySelector(".toggle-icon");
 
-        if (details) {
+      // Función para alternar expansión
+      const toggleDetails = (e) => {
+        // Evita que el botón propague el evento dos veces
+        if (e.target === button || e.currentTarget === content) {
           const isOpen =
             details.style.maxHeight && details.style.maxHeight !== "0px";
-
           if (isOpen) {
             details.style.maxHeight = "0";
-            icon!.style.transform = "rotate(0deg)";
+            icon.style.transform = "rotate(0deg)";
           } else {
             details.style.maxHeight = details.scrollHeight + "px";
-            icon!.style.transform = "rotate(180deg)";
+            icon.style.transform = "rotate(180deg)";
           }
+        }
+      };
+
+      // Click en el botón
+      button.addEventListener("click", toggleDetails);
+      // Click en el cuadro (excepto si se hace click en el botón)
+      content.addEventListener("click", (e) => {
+        if (e.target !== button && !button.contains(e.target)) {
+          toggleDetails(e);
         }
       });
     });
