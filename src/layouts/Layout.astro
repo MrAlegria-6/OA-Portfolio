@@ -25,26 +25,6 @@ import "@fontsource/k2d";
     <div class="content">
       <slot />
     </div>
-
-    <!-- 🌗 Script del modo oscuro -->
-    <script is:inline>
-      document.addEventListener("DOMContentLoaded", () => {
-        const html = document.documentElement;
-        const savedTheme = localStorage.getItem("theme");
-
-        if (savedTheme === "dark") {
-          html.classList.add("dark");
-        }
-
-        window.toggleTheme = function () {
-          html.classList.toggle("dark");
-          localStorage.setItem(
-            "theme",
-            html.classList.contains("dark") ? "dark" : "light"
-          );
-        };
-      });
-    </script>
   </body>
 </html>
 
@@ -62,14 +42,12 @@ body {
   scroll-behavior: smooth;
 }
 
-/* 🎨 Variables de color claras */
 :root {
   --bg: whitesmoke;
   --text: #1f1f1f;
   --accent: #d97706;
 }
 
-/* 🌙 Variables de color oscuras */
 .dark {
   --bg: #0f172a;
   --text: #f1f5f9;
