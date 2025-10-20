@@ -1,0 +1,71 @@
+---
+// src/pages/index.astro
+import Layout from "../layouts/Layout.astro";
+import HeaderDark from "../components/DarkMode/HeaderDark.astro";
+import HeroDark from "../components/DarkMode/HeroDark.astro";
+import AboutMeDark from "../components/DarkMode/AboutMeDark.astro";
+import SkillsDark from "../components/DarkMode/SkillsDark.astro";
+import WorkInterestDark from "../components/DarkMode/WorkInterestDark.astro";
+import EducationDark from "../components/DarkMode/EducationDark.astro";
+import AwardsDark from "../components/DarkMode/AwardsDark.astro";
+import ProyectsDark from "../components/DarkMode/ProyectsDark.astro";
+import ReviewsDark from "../components/DarkMode/ReviewsDark.astro";
+import ContactDark from "../components/DarkMode/ContactDark.astro";
+import FooterDark from "../components/DarkMode/FooterDark.astro";
+const softSkills = [
+    { name: "Teamwork" },
+    { name: "Effective Communication" },
+    { name: "Problem Solving" },
+    { name: "Adaptability" },
+    { name: "Critical Thinking" },
+];
+
+const technicalSkills = [
+    { name: "DOM and Astro" },
+    { name: "React / Next.js" },
+    { name: "API Integration" },
+    { name: "Python / Django" },
+    { name: "Git and Github" },
+];
+---
+
+<Layout title="Oscar Alegría - Full-Stack Developer">
+    <HeaderDark />
+    <main>
+        <HeroDark
+            name="Oscar Alegría"
+            title="Full-Stack Developer"
+            description="I specialize in creating responsive, efficient, and visually appealing web interfaces. My goal is to combine design precision with clean and structured code to deliver seamless digital experiences. I’m continuously improving my technical and creative skills to bring ideas to life through modern web technologies."
+            imageUrl="/OA.jpeg"
+        />
+
+        <AboutMeDark
+            title="About Me"
+            description=" I am a passionate Full-Stack developer with a strong interest in technology and continuous learning. I enjoy creating efficient and elegant solutions by combining intuitive interface design with a solid, functional back-end. I am practical, adaptable, and results-driven, always seeking to optimize processes and deliver value in every project I work on. I thrive both in collaborative environments and when working independently, approaching challenges with creativity and critical thinking."
+        />
+        <SkillsDark softSkills={softSkills} technicalSkills={technicalSkills} />
+        <WorkInterestDark />
+        <section id="education">
+            <EducationDark />
+        </section>
+        <AwardsDark />
+        <section id="proyects">
+            <ProyectsDark />
+        </section>
+        <ReviewsDark />
+        <section id="contact">
+            <ContactDark />
+        </section>
+        <FooterDark />
+    </main>
+</Layout>
+
+<style>
+    main {
+        position: relative;
+    }
+
+    body {
+        background-color: #282828;
+    }
+</style>

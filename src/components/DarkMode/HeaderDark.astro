@@ -29,24 +29,8 @@ import "@fontsource/k2d";
     </ul>
 
     <div class="nav-controls">
-      <!-- Botón que lleva a /dark -->
       <div class="container">
-        <a href="/dark" class="toggle" aria-label="Cambiar a modo oscuro">
-          <div class="icon icon--moon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              width="32"
-              height="32"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </div>
-
+        <a href="/" class="toggle" aria-label="Cambiar a modo claro">
           <div class="icon icon--sun">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +53,7 @@ import "@fontsource/k2d";
 <style>
   /* Header base */
   .header {
-    background: whitesmoke;
+    background: #383838;
     backdrop-filter: blur(10px);
     padding: 1.5rem 2rem;
     position: fixed;
@@ -100,7 +84,7 @@ import "@fontsource/k2d";
   }
 
   .nav-link {
-    color: #262525;
+    color: whitesmoke;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
@@ -137,45 +121,37 @@ import "@fontsource/k2d";
     align-items: center;
     gap: 1.5rem;
   }
+
   .toggle {
-    background-color: #fff;
+    background-color: #282828;
     width: 52px;
     height: 52px;
     border-radius: 50%;
     display: grid;
     place-items: center;
     cursor: pointer;
-    box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 50px 20px rgba(255, 255, 255, 0.3);
     line-height: 1;
+    text-decoration: none;
+    transition: transform 0.3s ease;
   }
 
-  .input {
-    display: none;
+  .toggle:hover {
+    transform: scale(1.1);
   }
 
   .icon {
     grid-column: 1 / 1;
     grid-row: 1 / 1;
-    transition: transform 500ms;
-    line-height: 0.1;
+    line-height: 0;
   }
 
   .icon--moon {
-    transition-delay: 200ms;
     color: #282828;
   }
 
   .icon--sun {
-    transform: scale(0);
-  }
-
-  #switch:checked + .icon--moon {
-    transform: rotate(360deg) scale(0);
-  }
-
-  #switch:checked ~ .icon--sun {
-    transition-delay: 200ms;
-    transform: scale(1) rotate(360deg);
+    color: #fbbf24;
   }
 
   /* Responsive */
@@ -192,26 +168,6 @@ import "@fontsource/k2d";
     .nav-controls {
       gap: 1rem;
     }
-
-    .lang-switch {
-      transform: scale(0.9);
-    }
-
-    .theme-switch {
-      transform: scale(0.9);
-    }
-  }
-    .toggle {
-    text-decoration: none;
-  }
-
-  .icon {
-    
-    transition: opacity 0.3s ease;
-  }
-
-  .icon.active {
-    opacity: 1;
   }
 
   @media (max-width: 480px) {
@@ -219,15 +175,12 @@ import "@fontsource/k2d";
       gap: 0.5rem;
     }
 
-    .lang-switch {
-      transform: scale(0.8);
-    }
-
-    .theme-switch {
+    .toggle {
       transform: scale(0.8);
     }
   }
 </style>
+
 <script>
   function smoothScrollTo(targetPosition, duration = 1000) {
     const startPosition = window.pageYOffset;
@@ -239,7 +192,6 @@ import "@fontsource/k2d";
       const timeElapsed = currentTime - startTime;
       const progress = Math.min(timeElapsed / duration, 1);
 
-      // Función de easing para hacer el scroll más suave
       const ease =
         progress < 0.5
           ? 2 * progress * progress
@@ -272,8 +224,7 @@ import "@fontsource/k2d";
           const offsetPosition =
             elementPosition + window.pageYOffset - headerHeight;
 
-          // Usar nuestra función de scroll suave personalizada
-          smoothScrollTo(offsetPosition, 800); // 800ms de duración
+          smoothScrollTo(offsetPosition, 800);
         }
       });
     });
